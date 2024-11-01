@@ -1,0 +1,127 @@
+<oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:ind="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:linux="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:shell="http://oval.mitre.org/XMLSchema/oval-definitions-5#cmd" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 https://github.com/CISecurity/OVALRepo/raw/master/oval_schemas/5.11.2/oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 https://github.com/CISecurity/OVALRepo/raw/master/oval_schemas/5.11.2/oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#cmd x-shellcommand-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#linux http://oval.mitre.org/language/version5.11/ovaldefinition/complete/linux-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent http://oval.mitre.org/language/version5.11/ovaldefinition/complete/independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#unix http://oval.mitre.org/language/version5.10/ovaldefinition/complete/unix-definitions-schema.xsd">
+   <generator>
+      <oval:product_name>Center for Internet Security</oval:product_name>
+      <oval:schema_version>5.11.2</oval:schema_version>
+      <oval:timestamp>2019-01-24T20:13:08+00:00</oval:timestamp>
+   </generator>
+   <definitions>
+      <definition class="inventory" id="oval:org.cisecurity.benchmarks.o_amazon_linux:def:101" version="1">
+         <metadata>
+            <title>Ensure Amazon Linux 2 is installed</title>
+            <affected family="unix">
+               <product>Amazon Linux 2</product>
+            </affected>
+            <description>Ensure Amazon Linux 2 is installed</description>
+         </metadata>
+         <criteria operator="AND">
+            <criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.o_amazon_linux:tst:101"/>
+            <criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.o_amazon_linux:tst:102"/>
+            <criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.o_amazon_linux:tst:103"/>
+         </criteria>
+      </definition>
+   </definitions>
+   <tests>
+      <ind:family_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="only one" check_existence="at_least_one_exists" comment="installed operating system is part of the Unix family" id="oval:org.cisecurity.benchmarks.o_amazon_linux:tst:101" version="1">
+         <ind:object object_ref="oval:org.cisecurity.benchmarks.o_amazon_linux:obj:101"/>
+         <ind:state state_ref="oval:org.cisecurity.benchmarks.o_amazon_linux:ste:101"/>
+      </ind:family_test>
+      <ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="distribution ID equal to amzn" id="oval:org.cisecurity.benchmarks.o_amazon_linux:tst:102" version="1">
+         <ind:object object_ref="oval:org.cisecurity.benchmarks.o_amazon_linux:obj:102"/>
+      </ind:textfilecontent54_test>
+      <ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="distribution release is equal to 2" id="oval:org.cisecurity.benchmarks.o_amazon_linux:tst:103" version="1">
+         <ind:object object_ref="oval:org.cisecurity.benchmarks.o_amazon_linux:obj:103"/>
+      </ind:textfilecontent54_test>
+   </tests>
+   <objects>
+      <ind:textfilecontent54_object comment="distribution ID equal to amzn" id="oval:org.cisecurity.benchmarks.o_amazon_linux:obj:102" version="1">
+         <ind:filepath>/etc/os-release</ind:filepath>
+         <ind:pattern operation="pattern match">^\s*ID\s*=\s*\"amzn\"\s*(#.*)?$</ind:pattern>
+         <ind:instance datatype="int" operation="equals">1</ind:instance>
+      </ind:textfilecontent54_object>
+      <ind:textfilecontent54_object comment="distribution release is equal to 2" id="oval:org.cisecurity.benchmarks.o_amazon_linux:obj:103" version="1">
+         <ind:filepath>/etc/os-release</ind:filepath>
+         <ind:pattern operation="pattern match">^\s*VERSION_ID\s*=\s*\"2\"\s*(#.*)?$</ind:pattern>
+         <ind:instance datatype="int" operation="equals">1</ind:instance>
+      </ind:textfilecontent54_object>
+      <ind:family_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.cisecurity.benchmarks.o_amazon_linux:obj:101" version="1"/>
+   </objects>
+   <states>
+      <ind:family_state id="oval:org.cisecurity.benchmarks.o_amazon_linux:ste:101" version="1">
+         <ind:family>unix</ind:family>
+      </ind:family_state>
+   </states>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+<ds:Reference URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>RYd9MbKf7uIHgVIkSZ6RD+uYVnTyFurQCG6rWTfkH54=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>
+YCEpGJpF9wUFz3ccZpW4dIDrW3pJCzFbwaFpnPBob28soyj4CAWrtft/9wMcHdeKhW2tWa5rb2qM
+wwPWLj7BC6vP+kcAwI9dI0je+8v8iPayxs9suIwAarjng3SbQMmOJva9DD1V9b8HqSeFSQO7x1+G
+qyx51KHrI2kW3tLl49xqmG3mErgDZnZC2V0nsr1fT5FMHALNvGQMCYqzCJqJS/x2G3Q4+l04BlLS
++jylSK1xyiE6YI8H6cA8rfTqbo1l5ZOV4jgB9Qt23jD2q3mxRBRSWDgi75UXCOdolHFkmU8S/dWT
+fU9t90VwUX2FqYpcqYGT9EMHiSMj+0Wo+BdfBT3lxGF+k4NdiWAs+8ltxOh2Cs5sGUPkvYFhh9M/
+CFATd+ldR8OECNuE1ZLU7432aL/WEE78flSnhGFrvEudp4fVsg/AHuPENVYOPbWTTDIyQ4Nm1VvN
+xWcWcl1LuRT6j7391k1ekdQmJ/jFPSKeu4/ALTPBh0tMT2c21510ZSXb
+</ds:SignatureValue>
+<ds:KeyInfo>
+<ds:X509Data>
+<ds:X509Certificate>
+MIIHbDCCBVSgAwIBAgIQCdceADCnzKkglkQGavVKYzANBgkqhkiG9w0BAQsFADBpMQswCQYDVQQG
+EwJVUzEXMBUGA1UEChMORGlnaUNlcnQsIEluYy4xQTA/BgNVBAMTOERpZ2lDZXJ0IFRydXN0ZWQg
+RzQgQ29kZSBTaWduaW5nIFJTQTQwOTYgU0hBMzg0IDIwMjEgQ0ExMB4XDTIzMTAxODAwMDAwMFoX
+DTI2MTAxODIzNTk1OVowgfQxEzARBgsrBgEEAYI3PAIBAxMCVVMxGTAXBgsrBgEEAYI3PAIBAhMI
+TWFyeWxhbmQxHTAbBgNVBA8MFFByaXZhdGUgT3JnYW5pemF0aW9uMRIwEAYDVQQFEwlEMDYwNTg4
+MTIxCzAJBgNVBAYTAlVTMREwDwYDVQQIEwhOZXcgWW9yazEXMBUGA1UEBxMORWFzdCBHcmVlbmJ1
+c2gxKjAoBgNVBAoTIUNlbnRlciBmb3IgSW50ZXJuZXQgU2VjdXJpdHksIEluYzEqMCgGA1UEAxMh
+Q2VudGVyIGZvciBJbnRlcm5ldCBTZWN1cml0eSwgSW5jMIIBojANBgkqhkiG9w0BAQEFAAOCAY8A
+MIIBigKCAYEAyZwTJr4Kb7QEDnVY3BEkPoS3fn+XoxhCTfFvlMk8zXDcR4pFMgPkXTrZ1KbENUIV
+skIhy1vmnh61vwSL0lcdzesCekKSxLqrEA4xunZk1MB5mLbHXchSSpI1co1vaSzJjkTYP1UsUVQz
+NoOzV0LNCoZdahjGTHSduWvbrHTEeD6/jvUj3AVWrTx6krzgYA3ozAxtUnapK7IrZERuGOSwTrgR
+Lr1aieQdFy8haW1YL+ks5HmLRvcoGp+J68GX/zfMTduvWxhcpXm4txKc4iJqGCRmyBU2XjGjpDBX
+ndxHgT4edRLz5PwWSeZUh8/tWOGFwnVw7njoOa0sFixy96H2BqEn+yPeRALyf59rjtPL66tsXuaA
+ilB63yqbH42mnkxHTX5zcEm337GzTOGRccsYzN/ApVuXDeMfsO+sSUosrimnxm9QTOyKcex5h1As
+rxBVfTw+Zf7jP1YRlmMlGPG1zffK2KjJhD6ivFi2sIDThEQLxIAC8XOjp2ZXvhx87yNTAgMBAAGj
+ggICMIIB/jAfBgNVHSMEGDAWgBRoN+Drtjv4XxGG+/5hewiIZfROQjAdBgNVHQ4EFgQUX2/J9FT5
+5BNF7JqfAl9SJkv3pf0wPQYDVR0gBDYwNDAyBgVngQwBAzApMCcGCCsGAQUFBwIBFhtodHRwOi8v
+d3d3LmRpZ2ljZXJ0LmNvbS9DUFMwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMD
+MIG1BgNVHR8Ega0wgaowU6BRoE+GTWh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydFRy
+dXN0ZWRHNENvZGVTaWduaW5nUlNBNDA5NlNIQTM4NDIwMjFDQTEuY3JsMFOgUaBPhk1odHRwOi8v
+Y3JsNC5kaWdpY2VydC5jb20vRGlnaUNlcnRUcnVzdGVkRzRDb2RlU2lnbmluZ1JTQTQwOTZTSEEz
+ODQyMDIxQ0ExLmNybDCBlAYIKwYBBQUHAQEEgYcwgYQwJAYIKwYBBQUHMAGGGGh0dHA6Ly9vY3Nw
+LmRpZ2ljZXJ0LmNvbTBcBggrBgEFBQcwAoZQaHR0cDovL2NhY2VydHMuZGlnaWNlcnQuY29tL0Rp
+Z2lDZXJ0VHJ1c3RlZEc0Q29kZVNpZ25pbmdSU0E0MDk2U0hBMzg0MjAyMUNBMS5jcnQwCQYDVR0T
+BAIwADANBgkqhkiG9w0BAQsFAAOCAgEASLOHf1FQ7TrGqEoVXYoeNSkRWdVCUGd1JCDs7Hb9sLd3
+eQuipZ4EorQS/9qMiVMhmlJfF75sNVQhr1K5UtjrDRFMTzYmh78hAyovowzgyVKdGFqiVVr5m+mb
+vVyglLlA4V076LMBaKRknm1Dt8r0/5GSRCrkP2origpYMMaocN+iBX9+MImnh3J1Ehn0nRUhW86Q
+mt3/YCVIaQZisv+KmOxyAq1m6fiIYIvXY+cH2dDIheoVteb/NjYnKVqE6xTpOsxF16pykXiM9yk3
+Q9nlJS36KEGRP4wrySU4eIBnTcv4mimZjkWj6bIvk8otNJ14FbyltaPwIc3dE3oPGfSmCrkxs73j
+iqBs2TXLvblEmOhY8ko3xVdTm0zMP50MQVO948fz9yF+xdnPdMPT1/lCmGp6iWYRzxnvEkA1+HFl
+yy9YztrM8WNAhXirpUZg3HWQE2ONLKMtqQrkIHD2nikda77flk6oirqDuCf8Q7g8s86/KabTdxrw
+pRmsRjDkAfKVae58ctaKbmF32oU9BGk+9MPG8HF5Yfoh12DE1fLZcPzZrROrDFJGGxwhv5FlnxGg
+6G7jKi68erZnpaOPayK0bXyZNunqkI9IbIuPqMw5qaCZZgN6AEHIbGTKdrWEf11DmR7MdTjv3/vu
+JWtIXgk3kQFX27w9JhqV6QogVmzIfEQ=
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>yZwTJr4Kb7QEDnVY3BEkPoS3fn+XoxhCTfFvlMk8zXDcR4pFMgPkXTrZ1KbENUIVskIhy1vmnh61
+vwSL0lcdzesCekKSxLqrEA4xunZk1MB5mLbHXchSSpI1co1vaSzJjkTYP1UsUVQzNoOzV0LNCoZd
+ahjGTHSduWvbrHTEeD6/jvUj3AVWrTx6krzgYA3ozAxtUnapK7IrZERuGOSwTrgRLr1aieQdFy8h
+aW1YL+ks5HmLRvcoGp+J68GX/zfMTduvWxhcpXm4txKc4iJqGCRmyBU2XjGjpDBXndxHgT4edRLz
+5PwWSeZUh8/tWOGFwnVw7njoOa0sFixy96H2BqEn+yPeRALyf59rjtPL66tsXuaAilB63yqbH42m
+nkxHTX5zcEm337GzTOGRccsYzN/ApVuXDeMfsO+sSUosrimnxm9QTOyKcex5h1AsrxBVfTw+Zf7j
+P1YRlmMlGPG1zffK2KjJhD6ivFi2sIDThEQLxIAC8XOjp2ZXvhx87yNT</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+</ds:Signature></oval_definitions>

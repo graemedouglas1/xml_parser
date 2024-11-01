@@ -1,0 +1,18 @@
+---
+
+inspec_rules:
+
+{%- for task in tasks +%}
+  "{{ task.number }}":
+    title: '{{ task.number }} | {{ task.name }}'
+    section: '{{ task.cis_section }}'
+    description: |
+        {{ task.desc | indent(8) }}
+    type: 
+    impact: '{{ task.impact }}'
+    tags: [{% for tag in task.tags -%}'{{ tag }}'{{ ',' if not loop.last }}{%- endfor +%}]
+    enabled: true
+    properties:
+      match: all
+      rules:
+{%+ endfor %}
